@@ -11,12 +11,12 @@ export class CreateNewWalletComponent implements OnInit {
     public loading: boolean;
 
     constructor() {
-    }
-
-    ngOnInit(): void {
         this.password = '';
         this.isInputInvalid = false;
         this.loading = false;
+    }
+
+    ngOnInit(): void {
     }
 
     public enterPasswordHandle(value: string): void {

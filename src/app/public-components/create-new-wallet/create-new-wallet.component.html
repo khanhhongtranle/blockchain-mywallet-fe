@@ -14,7 +14,7 @@
                                 <svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
                                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#lock"></use>
                                 </svg>
-                                <input (keyup)="enterPasswordHandle($event.target.value)" type="password" id="text-input-id-1" name="password" class="slds-input" />
+                                <input (keyup)="enterPasswordHandle($event.target.value)" type="password" id="text-input-id-1" name="password" class="slds-input"/>
                             </div>
                             <div class="slds-form-element__help" id="error-message-unique-id">Password is required.</div>
                         </div>
@@ -35,3 +35,4 @@
 </div>
 
 <app-loading-modal-component [isOpen]="loading"></app-loading-modal-component>
+

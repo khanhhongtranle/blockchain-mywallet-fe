@@ -7,6 +7,7 @@ import {AccessMyWalletComponent} from './access-my-wallet/access-my-wallet.compo
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {GlobalComponentsModule} from '../global-components/global-components.module';
+import {LoadingModalComponentComponent} from '../global-components/loading-modal-component/loading-modal-component.component';
 
 
 @NgModule({
