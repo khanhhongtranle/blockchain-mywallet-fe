@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
+import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './public-components/page-not-found/page-not-found.component';
@@ -25,10 +26,12 @@ const appRoutes: Routes = [
         RouterModule.forRoot(
             appRoutes,
             {enableTracing: true} // <-- debugging purposes only
-        )
+        ),
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
