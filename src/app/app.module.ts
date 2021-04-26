@@ -8,7 +8,6 @@ import {PageNotFoundComponent} from './public-components/page-not-found/page-not
 import {LoginComponent} from './public-components/login/login.component';
 import {CreateNewWalletComponent} from './public-components/create-new-wallet/create-new-wallet.component';
 import {AccessMyWalletComponent} from './public-components/access-my-wallet/access-my-wallet.component';
-import { LoadingModalComponentComponent } from './globalComponents/loading-modal-component/loading-modal-component.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -21,7 +20,6 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        LoadingModalComponentComponent
     ],
     imports: [
         BrowserModule,
