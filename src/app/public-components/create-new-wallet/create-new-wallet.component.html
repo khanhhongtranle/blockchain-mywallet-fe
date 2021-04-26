@@ -8,18 +8,19 @@
             <div class="slds-card__body_inner slds-text-align--left">
                 <div class="slds-grid slds-wrap">
                     <div class="slds-col--padded-around-medium slds-size--1-of-1">
-                        <div class="slds-form-element">
+                        <div class="slds-form-element" [class.slds-has-error]="isInputInvalid">
                             <label class="slds-form-element__label" for="text-input-id-1">Your password</label>
                             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
                                 <svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
                                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#lock"></use>
                                 </svg>
-                                <input [(ngModel)]="password" type="password" id="text-input-id-1" name="password" class="slds-input" />
+                                <input (keyup)="enterPasswordHandle($event.target.value)" type="password" id="text-input-id-1" name="password" class="slds-input" />
                             </div>
+                            <div class="slds-form-element__help" id="error-message-unique-id">Password is required.</div>
                         </div>
                     </div>
                     <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
-                        <button class="slds-button slds-button--brand">
+                        <button (click)="clickToNextStepHandle()" class="slds-button slds-button--brand">
                             To next step
                         </button>
                     </div>
@@ -32,3 +33,5 @@
     </div>
     <div class="slds-col slds-size--4-of-12"></div>
 </div>
+
+<app-loading-modal-component [isOpen]="loading"></app-loading-modal-component>

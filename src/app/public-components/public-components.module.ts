@@ -6,6 +6,7 @@ import { CreateNewWalletComponent } from './create-new-wallet/create-new-wallet.
 import { AccessMyWalletComponent } from './access-my-wallet/access-my-wallet.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {GlobalComponentsModule} from '../global-components/global-components.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        GlobalComponentsModule
     ]
 })
 export class PublicComponentsModule { }
