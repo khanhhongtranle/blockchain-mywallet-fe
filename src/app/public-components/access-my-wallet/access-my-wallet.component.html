@@ -1,1 +1,42 @@
-<p>access-my-wallet works!</p>
+<div class="slds-grid slds-wrap" style="margin-top: 8rem">
+    <div class="slds-col slds-size--4-of-12"></div>
+    <div class="slds-col slds-size--4-of-12">
+        <article class="slds-card" style=" padding: 1rem">
+            <div class="slds-text-align--center">
+                <h3 class="slds-text-heading--large">Access my wallet</h3>
+            </div>
+            <div class="slds-card__body_inner slds-text-align--left">
+                <div class="slds-grid slds-wrap">
+                    <div  class="slds-col--padded-around-medium slds-size--1-of-1">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="text-input-id-2">Private key</label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                                <svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#key"></use>
+                                </svg>
+                                <input [(ngModel)]="privateKey" type="text" id="text-input-id-2" name="password" class="slds-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col--padded-around-medium slds-size--1-of-1">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="text-input-id-1">Password</label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                                <svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#lock"></use>
+                                </svg>
+                                <input [(ngModel)]="password" type="password" id="text-input-id-1" name="password" class="slds-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
+                        <button (click)="clickToAccessHandle()" class="slds-button slds-button--brand">
+                            Access wallet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="slds-col slds-size--4-of-12"></div>
+</div>
