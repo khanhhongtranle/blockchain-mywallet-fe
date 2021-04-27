@@ -11,11 +11,13 @@ import {AccessMyWalletComponent} from './public-components/access-my-wallet/acce
 import {PublicComponentsModule} from './public-components/public-components.module';
 import {PrivateComponentsModule} from './private-components/private-components.module';
 import {GlobalComponentsModule} from './global-components/global-components.module';
+import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'create-new-wallet', component: CreateNewWalletComponent},
     {path: 'access-my-wallet', component: AccessMyWalletComponent},
+    {path: 'dashboard', component: DashboardComponentComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];

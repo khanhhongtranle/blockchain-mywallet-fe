@@ -1,0 +1,40 @@
+<header class="slds-global-header_container">
+    <a href="#" class="slds-assistive-text slds-assistive-text_focus">Skip to Navigation</a>
+    <a href="#" class="slds-assistive-text slds-assistive-text_focus">Skip to Main Content</a>
+    <div class="slds-global-header slds-grid slds-grid_align-spread">
+        <div class="slds-global-header__item">
+            <div class="slds-global-header__logo">
+                <span class="slds-assistive-text">Salesforce</span>
+            </div>
+        </div>
+        <div class="slds-global-header__item">
+            <ul class="slds-global-actions">
+                <li class="slds-global-actions__item">
+                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                        <button (click)="userToogleHandle()" class="slds-button slds-global-actions__avatar slds-global-actions__item-action" title="person name" aria-haspopup="true">
+                            <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
+                                <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
+                            </span>
+                        </button>
+                    </div>
+                    <section *ngIf="userToogle" aria-describedby="dialog-body-id-8" aria-label="My Favorites" class="slds-popover slds-nubbin_top-right slds-dynamic-menu" role="dialog" style="position:absolute; margin-top: 3rem; margin-left: -7.5rem; width: 8rem">
+                        <div class="slds-popover__body slds-p-horizontal_none" id="dialog-body-id-8">
+                            <div id="listbox-unique-id" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-10" role="group" aria-label="My Favorites">
+                                    <li role="presentation" class="slds-listbox__item" style="padding: 0.5rem">
+                                        <button (click)="logoutHandle()" class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">
+                                            <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#logout"></use>
+                                            </svg>
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

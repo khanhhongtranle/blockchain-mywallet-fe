@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
+import {GlobalComponentsModule} from '../global-components/global-components.module';
 
 
 
@@ -8,8 +9,9 @@ import { DashboardComponentComponent } from './dashboard-component/dashboard-com
   declarations: [
     DashboardComponentComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        GlobalComponentsModule
+    ]
 })
 export class PrivateComponentsModule { }
