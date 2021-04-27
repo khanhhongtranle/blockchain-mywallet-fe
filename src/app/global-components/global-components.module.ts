@@ -6,10 +6,10 @@ import { LoadingModalComponentComponent } from './loading-modal-component/loadin
 
 @NgModule({
     declarations: [
-        LoadingModalComponentComponent
+        LoadingModalComponentComponent,
     ],
     exports: [
-        LoadingModalComponentComponent
+        LoadingModalComponentComponent,
     ],
     imports: [
         CommonModule

@@ -9,6 +9,7 @@ export class CreateNewWalletComponent implements OnInit {
     private password: string;
     public isInputInvalid: boolean;
     public loading: boolean;
+    public privateKey: string;
 
     constructor() {
         this.password = '';
@@ -29,7 +30,9 @@ export class CreateNewWalletComponent implements OnInit {
             this.isInputInvalid = true;
             return;
         }
-        // gọi 1 server sinh ra key store file
+        // gọi 1 server sinh ra private key
         this.loading = true;
+
+        this.privateKey = 'hdkjahsdkjahslkdhakjshdajk';
     }
 }
