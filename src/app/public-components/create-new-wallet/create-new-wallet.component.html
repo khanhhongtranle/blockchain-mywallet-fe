@@ -16,17 +16,21 @@
                                 </svg>
                                 <input (keyup)="enterPasswordHandle($event.target.value)" type="password" id="text-input-id-1" name="password" class="slds-input"/>
                             </div>
-                            <div class="slds-form-element__help" id="error-message-unique-id">Password is required.</div>
                         </div>
                     </div>
                     <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
                         <button (click)="clickToNextStepHandle()" class="slds-button slds-button--brand">
                             To next step
+                            <svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#forward"></use>
+                            </svg>
                         </button>
                     </div>
                     <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
-                        <span class="slds-text-body_small">DO NOT FORGET to save your password. You will need this Password + Keystore File to unlock your wallet.</span>
+                        <span class="slds-text-body_small">DO NOT FORGET to save your password. You will need this Password + Private Key to unlock your wallet.</span>
+                        <p><a routerLink="/login">Back to home</a></p>
                     </div>
+
                 </div>
             </div>
         </article>

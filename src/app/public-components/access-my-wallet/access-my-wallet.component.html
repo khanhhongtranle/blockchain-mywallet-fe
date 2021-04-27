@@ -32,7 +32,13 @@
                     <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
                         <button (click)="clickToAccessHandle()" class="slds-button slds-button--brand">
                             Access wallet
+                            <svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#forward"></use>
+                            </svg>
                         </button>
+                    </div>
+                    <div class="slds-col--padded-around-medium slds-size--1-of-1 slds-text-align--center">
+                        <a routerLink="/login">Back to home</a>
                     </div>
                 </div>
             </div>

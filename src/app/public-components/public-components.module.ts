@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {GlobalComponentsModule} from '../global-components/global-components.module';
 import {LoadingModalComponentComponent} from '../global-components/loading-modal-component/loading-modal-component.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {LoadingModalComponentComponent} from '../global-components/loading-modal
         FormsModule,
         ReactiveFormsModule,
         GlobalComponentsModule,
+        RouterModule,
     ]
 })
 export class PublicComponentsModule {
