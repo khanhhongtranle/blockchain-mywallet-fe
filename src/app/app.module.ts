@@ -12,12 +12,14 @@ import {PublicComponentsModule} from './public-components/public-components.modu
 import {PrivateComponentsModule} from './private-components/private-components.module';
 import {GlobalComponentsModule} from './global-components/global-components.module';
 import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
+import {SendTransactionComponent} from './private-components/send-transaction/send-transaction.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'create-new-wallet', component: CreateNewWalletComponent},
     {path: 'access-my-wallet', component: AccessMyWalletComponent},
     {path: 'dashboard', component: DashboardComponentComponent},
+    {path: 'send-transaction', component: SendTransactionComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
