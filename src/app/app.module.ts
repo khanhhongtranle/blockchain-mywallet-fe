@@ -13,6 +13,7 @@ import {PrivateComponentsModule} from './private-components/private-components.m
 import {GlobalComponentsModule} from './global-components/global-components.module';
 import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
 import {SendTransactionComponent} from './private-components/send-transaction/send-transaction.component';
+import {BuyCoinComponent} from './private-components/buy-coin/buy-coin.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     {path: 'access-my-wallet', component: AccessMyWalletComponent},
     {path: 'dashboard', component: DashboardComponentComponent},
     {path: 'send-transaction', component: SendTransactionComponent},
+    {path: 'buy-coin', component: BuyCoinComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
