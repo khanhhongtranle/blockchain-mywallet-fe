@@ -2,19 +2,19 @@
     <div>
         <fieldset class="slds-nav-vertical">
                     <span class="slds-nav-vertical__item">
-                        <input type="radio" id="unique-id-01-dashbord" value="unique-id-01-recent" name="unique-id-example" checked=""/>
+                        <input (click)="navigateToDashBoard()" type="radio" id="unique-id-01-dashbord" value="unique-id-01-recent" name="unique-id-example" checked=""/>
                             <label class="slds-nav-vertical__action" for="unique-id-01-dashbord">
                                 <span class="slds-nav-vertical_radio-faux">My Dashboard</span>
                             </label>
                     </span>
             <span class="slds-nav-vertical__item">
-                        <input type="radio" id="unique-id-01-send-transaction" value="unique-id-01-created-by-me" name="unique-id-example"/>
+                        <input (click)="navigateToSendTransaction()" type="radio" id="unique-id-01-send-transaction" value="unique-id-01-created-by-me" name="unique-id-example"/>
                             <label class="slds-nav-vertical__action" for="unique-id-01-send-transaction">
                                 <span class="slds-nav-vertical_radio-faux">Send Transaction</span>
                             </label>
                     </span>
             <span class="slds-nav-vertical__item">
-                        <input type="radio" id="unique-id-01-by-coin" value="unique-id-01-created-by-me" name="unique-id-example"/>
+                        <input (click)="navigateToBuyCoin()" type="radio" id="unique-id-01-by-coin" value="unique-id-01-created-by-me" name="unique-id-example"/>
                             <label class="slds-nav-vertical__action" for="unique-id-01-by-coin">
                                 <span class="slds-nav-vertical_radio-faux">Buy Coins</span>
                             </label>
