@@ -7,7 +7,7 @@ import {GlobalComponentsModule} from '../global-components/global-components.mod
 
 @NgModule({
   declarations: [
-    DashboardComponentComponent
+    DashboardComponentComponent,
   ],
     imports: [
         CommonModule,

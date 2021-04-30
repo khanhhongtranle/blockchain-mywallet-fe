@@ -7,8 +7,37 @@
                 <span class="slds-assistive-text">Salesforce</span>
             </div>
         </div>
+
         <div class="slds-global-header__item">
             <ul class="slds-global-actions">
+                <li class="slds-global-actions__item">
+                    <div class="slds-global-actions__favorites slds-dropdown-trigger slds-dropdown-trigger_click">
+                        <div class="slds-button-group">
+                            <button class="slds-button slds-button_icon slds-global-actions__favorites-action slds-button_icon slds-button_icon-border slds-button_icon-small" aria-pressed="false" title="Toggle Favorites">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Toggle Favorite</span>
+                            </button>
+                            <button class="slds-button slds-button_icon slds-global-actions__favorites-more slds-button_icon slds-button_icon-border slds-button_icon-small" title="View Favorites">
+                                <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                </svg>
+                                <span class="slds-assistive-text">View Favorites</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="slds-global-actions__item">
+                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                        <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-actions__help slds-global-actions__item-action" aria-haspopup="true" title="Help and Training">
+                            <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#question"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Help and Training</span>
+                        </button>
+                    </div>
+                </li>
                 <li class="slds-global-actions__item">
                     <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
                         <button (click)="userToogleHandle()" class="slds-button slds-global-actions__avatar slds-global-actions__item-action" title="person name" aria-haspopup="true">

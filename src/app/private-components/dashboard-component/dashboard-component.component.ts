@@ -8,12 +8,7 @@ declare var window: any;
     styleUrls: ['./dashboard-component.component.css']
 })
 export class DashboardComponentComponent implements OnInit {
-
-    public maxHeight: string;
-
     constructor() {
-        this.maxHeight = 'height: ' + window.screen.height + ' px';
-        console.log(this.maxHeight);
     }
 
     ngOnInit(): void {

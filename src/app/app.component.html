@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="!isLogin">
+    <router-outlet></router-outlet>
+</ng-container>
+<ng-container *ngIf="isLogin">
+    <app-global-header-component></app-global-header-component>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+            <app-vertical-navigation></app-vertical-navigation>
+        </div>
+        <div class="slds-col slds-size_2-of-3" style="margin-top: 5rem; padding-right: 5rem">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
