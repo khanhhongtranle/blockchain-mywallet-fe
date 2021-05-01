@@ -12,12 +12,13 @@ import {PublicComponentsModule} from './public-components/public-components.modu
 import {PrivateComponentsModule} from './private-components/private-components.module';
 import {GlobalComponentsModule} from './global-components/global-components.module';
 import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
-import {SendTransactionComponent} from './private-components/send-transaction/send-transaction.component';
-import {BuyCoinComponent} from './private-components/buy-coin/buy-coin.component';
 import {AuthGuardService} from './services/authguard.service';
 import {AuthService} from './services/auth.service';
 import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import {HomePageComponent} from './private-components/home-page/home-page.component';
+import {ConfigurationServiceProvider} from './services/configuration.service';
+import {BackendService} from './services/backend.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
     {path: '', component: DashboardComponentComponent, canActivate: [AuthGuardService]},
@@ -35,6 +36,8 @@ const appRoutes: Routes = [
     ],
     imports: [
         BrowserModule,
+        // import HttpClientModule after BrowserModule.
+        HttpClientModule,
         RouterModule.forRoot(
             appRoutes,
             {enableTracing: true} // <-- debugging purposes only
@@ -53,6 +56,8 @@ const appRoutes: Routes = [
         AuthService,
         JwtHelperService,
         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        ConfigurationServiceProvider,
+        BackendService
     ],
     bootstrap: [AppComponent]
 })
