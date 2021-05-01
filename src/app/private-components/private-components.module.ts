@@ -4,6 +4,7 @@ import { DashboardComponentComponent } from './dashboard-component/dashboard-com
 import {GlobalComponentsModule} from '../global-components/global-components.module';
 import { SendTransactionComponent } from './send-transaction/send-transaction.component';
 import { BuyCoinComponent } from './buy-coin/buy-coin.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -12,6 +13,7 @@ import { BuyCoinComponent } from './buy-coin/buy-coin.component';
     DashboardComponentComponent,
     SendTransactionComponent,
     BuyCoinComponent,
+    HomePageComponent,
   ],
     imports: [
         CommonModule,

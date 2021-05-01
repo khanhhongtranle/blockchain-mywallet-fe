@@ -1,0 +1,13 @@
+<ng-container>
+    <app-global-header-component></app-global-header-component>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+            <app-vertical-navigation (navigate)="navigateTabHandle($event)"></app-vertical-navigation>
+        </div>
+        <div class="slds-col slds-size_2-of-3" style="margin-top: 5rem; padding-right: 5rem">
+            <app-dashboard-component *ngIf="showDashboard"></app-dashboard-component>
+            <app-send-transaction *ngIf="showSendTransaction"></app-send-transaction>
+            <app-buy-coin *ngIf="showBuyCoin"></app-buy-coin>
+        </div>
+    </div>
+</ng-container>

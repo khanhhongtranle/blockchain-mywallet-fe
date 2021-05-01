@@ -14,14 +14,17 @@ import {GlobalComponentsModule} from './global-components/global-components.modu
 import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
 import {SendTransactionComponent} from './private-components/send-transaction/send-transaction.component';
 import {BuyCoinComponent} from './private-components/buy-coin/buy-coin.component';
+import {AuthGuardService} from './services/authguard.service';
+import {AuthService} from './services/auth.service';
+import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
+import {HomePageComponent} from './private-components/home-page/home-page.component';
 
 const appRoutes: Routes = [
+    {path: '', component: DashboardComponentComponent, canActivate: [AuthGuardService]},
     {path: 'login', component: LoginComponent},
     {path: 'create-new-wallet', component: CreateNewWalletComponent},
     {path: 'access-my-wallet', component: AccessMyWalletComponent},
-    {path: 'dashboard', component: DashboardComponentComponent},
-    {path: 'send-transaction', component: SendTransactionComponent},
-    {path: 'buy-coin', component: BuyCoinComponent},
+    {path: 'dashboard', component: HomePageComponent, canActivate: [AuthGuardService]},
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
@@ -45,7 +48,12 @@ const appRoutes: Routes = [
     exports: [
         RouterModule,
     ],
-    providers: [],
+    providers: [
+        AuthGuardService,
+        AuthService,
+        JwtHelperService,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

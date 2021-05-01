@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-vertical-navigation',
@@ -8,21 +7,23 @@ import {Router} from '@angular/router';
 })
 export class VerticalNavigationComponent implements OnInit {
 
-    constructor(private router: Router) {
+    @Output() public navigate = new EventEmitter<string>();
+
+    constructor() {
     }
 
     ngOnInit(): void {
     }
 
     public navigateToDashBoard(): void {
-        this.router.navigate(['/dashboard']);
+        this.navigate.emit('dashboard');
     }
 
     public navigateToSendTransaction(): void {
-        this.router.navigate(['/send-transaction']);
+        this.navigate.emit('sendtransaction');
     }
 
     public navigateToBuyCoin(): void {
-        this.router.navigate(['/buy-coin']);
+        this.navigate.emit('buycoin');
     }
 }
