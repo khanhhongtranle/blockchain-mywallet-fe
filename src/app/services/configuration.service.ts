@@ -1,6 +1,9 @@
 export class ConfigurationService {
 
     public apiUrl: string;
+    public data: any = {
+        autoLogout: 1
+    };
 
     constructor() {
     }

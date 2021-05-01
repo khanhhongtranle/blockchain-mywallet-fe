@@ -34,5 +34,7 @@ export class CreateNewWalletComponent implements OnInit {
         this.loading = true;
 
         this.privateKey = 'hdkjahsdkjahslkdhakjshdajk';
+
+        this.loading = false;
     }
 }

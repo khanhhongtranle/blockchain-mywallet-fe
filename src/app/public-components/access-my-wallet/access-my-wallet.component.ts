@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BackendService} from '../../services/backend.service';
 
 @Component({
     selector: 'app-access-my-wallet',
@@ -8,7 +9,7 @@ export class AccessMyWalletComponent implements OnInit {
     public privateKey: string;
     public password: string;
 
-    constructor() {
+    constructor(private backend: BackendService) {
         this.privateKey = '';
         this.password = '';
     }
@@ -21,5 +22,9 @@ export class AccessMyWalletComponent implements OnInit {
             return;
         }
         // service login
+        this.backend.getRequest('access_my_wallet', {password: this.password, private_key: this.privateKey})
+            .subscribe((response) => {
+                console.log(response);
+            });
     }
 }
