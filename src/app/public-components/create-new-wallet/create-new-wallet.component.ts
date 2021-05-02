@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BackendService} from '../../services/backend.service';
 
 @Component({
     selector: 'app-create-new-wallet',
@@ -11,7 +12,7 @@ export class CreateNewWalletComponent implements OnInit {
     public loading: boolean;
     public privateKey: string;
 
-    constructor() {
+    constructor(private backend: BackendService) {
         this.password = '';
         this.isInputInvalid = false;
         this.loading = false;
@@ -33,8 +34,15 @@ export class CreateNewWalletComponent implements OnInit {
         // gọi 1 server sinh ra private key
         this.loading = true;
 
-        this.privateKey = 'hdkjahsdkjahslkdhakjshdajk';
+        this.backend.postRequest('/create_new_wallet', {}, {password: this.password})
+        .subscribe((response) => {
+            const resJson = JSON.parse(response);
+            if (resJson.status === 201){
+                const bodyJson = JSON.parse(resJson.body);
+                this.privateKey = bodyJson.private_key;
+                this.loading = false;
+            }
+        });
 
-        this.loading = false;
     }
 }

@@ -4,8 +4,14 @@ import {ConfigurationService} from './configuration.service';
 import {Observable, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 
+export const ResponseStatusMessage = {
+    201: 'Success',
+    404: 'Error',
+    400: 'Invalid Input'
+};
+
 @Injectable()
-export class BackendService{
+export class BackendService {
     private autoLogout: any = {};
     private httpErrorsToReport = [];
     private httpErrorReporting = false;
@@ -14,7 +20,7 @@ export class BackendService{
     constructor(private http: HttpClient, private configuration: ConfigurationService, private router: Router) {
     }
 
-    public get apiURL(): string{
+    public get apiURL(): string {
         return this.configuration.apiUrl;
     }
 
@@ -67,7 +73,8 @@ export class BackendService{
             {headers: this.getHeaders(), observe: 'response', params: this.prepareParams(params)}
         ).subscribe(
             (res) => {
-                responseSubject.next(res);
+                const resString = JSON.stringify({status: res.status, body: res.body});
+                responseSubject.next(resString);
                 responseSubject.complete();
             },
             err => {
@@ -95,7 +102,8 @@ export class BackendService{
             body, {headers, observe: 'response', params: this.prepareParams(params), responseType: 'text'}
         ).subscribe(
             (res) => {
-                responseSubject.next(res);
+                const resString = JSON.stringify({status: res.status, body: res.body});
+                responseSubject.next(resString);
                 responseSubject.complete();
             },
             err => {
