@@ -22,7 +22,7 @@ export class AccessMyWalletComponent implements OnInit {
             return;
         }
         // service login
-        this.backend.getRequest('access_my_wallet', {password: this.password, private_key: this.privateKey})
+        this.backend.postRequest('access_my_wallet', {} , {password: this.password, private_key: this.privateKey})
             .subscribe((response) => {
                 console.log(response);
             });

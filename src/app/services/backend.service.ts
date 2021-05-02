@@ -67,11 +67,39 @@ export class BackendService{
             {headers: this.getHeaders(), observe: 'response', params: this.prepareParams(params)}
         ).subscribe(
             (res) => {
-                responseSubject.next(res.body);
+                responseSubject.next(res);
                 responseSubject.complete();
             },
             err => {
                 this.handleError(err, route, 'GET', {getParams: params});
+                responseSubject.error(err);
+            }
+        );
+        return responseSubject.asObservable();
+    }
+
+    public postRequest(route: string = '', params: any = {}, body: any = {}, httpErrorReport = true): Observable<any> {
+        const responseSubject = new Subject<any>();
+
+        this.resetTimeOut();
+
+        let headers = this.getHeaders();
+        if (body) {
+            headers = headers.set('Content-Type', 'application/json');
+        } else {
+            headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
+        }
+
+        this.http.post(
+            this.configuration.apiUrl + '/' + encodeURI(route),
+            body, {headers, observe: 'response', params: this.prepareParams(params), responseType: 'text'}
+        ).subscribe(
+            (res) => {
+                responseSubject.next(res);
+                responseSubject.complete();
+            },
+            err => {
+                this.handleError(err, route, 'POST', {getParams: params, body}, httpErrorReport);
                 responseSubject.error(err);
             }
         );
