@@ -1,3 +1,26 @@
+<div *ngIf="invalidWallet" class="demo-only" style="height:4rem">
+    <div class="slds-notify_container slds-is-relative">
+        <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+                </span>
+            <div class="slds-notify__content">
+                <h2 class="slds-text-heading_small ">Access wallet failed</h2>
+            </div>
+            <div class="slds-notify__close">
+                <button (click)="invalidWallet = !invalidWallet" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="slds-grid slds-wrap" style="margin-top: 8rem">
     <div class="slds-col slds-size--4-of-12"></div>
     <div class="slds-col slds-size--4-of-12">
@@ -7,7 +30,7 @@
             </div>
             <div class="slds-card__body_inner slds-text-align--left">
                 <div class="slds-grid slds-wrap">
-                    <div  class="slds-col--padded-around-medium slds-size--1-of-1">
+                    <div class="slds-col--padded-around-medium slds-size--1-of-1">
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="text-input-id-2">Private key</label>
                             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">

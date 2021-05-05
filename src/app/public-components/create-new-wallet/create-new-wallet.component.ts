@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-create-new-wallet',
@@ -12,7 +13,7 @@ export class CreateNewWalletComponent implements OnInit {
     public loading: boolean;
     public privateKey: string;
 
-    constructor(private backend: BackendService) {
+    constructor(private backend: BackendService, private router: Router) {
         this.password = '';
         this.isInputInvalid = false;
         this.loading = false;
@@ -37,12 +38,17 @@ export class CreateNewWalletComponent implements OnInit {
         this.backend.postRequest('/create_new_wallet', {}, {password: this.password})
         .subscribe((response) => {
             const resJson = JSON.parse(response);
-            if (resJson.status === 201){
+            if (resJson.status === 201) {
                 const bodyJson = JSON.parse(resJson.body);
-                this.privateKey = bodyJson.private_key;
+                this.privateKey = bodyJson.data.private_key;
                 this.loading = false;
             }
         });
 
+    }
+
+    public closeModalPrivateKeyHandle(): void {
+        this.privateKey = '';
+        this.router.navigate(['/access-my-wallet']);
     }
 }
