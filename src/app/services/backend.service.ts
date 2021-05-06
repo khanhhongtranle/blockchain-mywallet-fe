@@ -85,7 +85,7 @@ export class BackendService {
         return responseSubject.asObservable();
     }
 
-    public postRequest(route: string = '', params: any = {}, body: any = {}, httpErrorReport = true): Observable<any> {
+    public postRequest(route: string = '', params: any = {}, body: any = {}, accessToken: string = null, httpErrorReport = true): Observable<any> {
         const responseSubject = new Subject<any>();
 
         this.resetTimeOut();
@@ -96,7 +96,9 @@ export class BackendService {
         } else {
             headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
         }
-
+        if (accessToken) {
+            headers = headers.set('Authorization', 'JWT ' + accessToken);
+        }
         this.http.post(
             this.configuration.apiUrl + '/' + encodeURI(route),
             body, {headers, observe: 'response', params: this.prepareParams(params), responseType: 'text'}

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {WalletService} from '../../services/wallet.service';
 
 @Component({
-  selector: 'app-buy-coin',
-  templateUrl: './buy-coin.component.html',
-  styleUrls: ['./buy-coin.component.css']
+    selector: 'app-buy-coin',
+    templateUrl: './buy-coin.component.html',
+    styleUrls: ['./buy-coin.component.css']
 })
 export class BuyCoinComponent implements OnInit {
+    public coins: number;
 
-  constructor() { }
+    constructor(private wallet: WalletService) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    public buyCoinsHandle(): void {
+        this.wallet.buyCoins(this.coins);
+    }
 }

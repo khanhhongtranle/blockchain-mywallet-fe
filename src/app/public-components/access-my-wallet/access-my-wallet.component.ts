@@ -28,6 +28,7 @@ export class AccessMyWalletComponent implements OnInit {
         // service login
         this.backend.postRequest('access_my_wallet', {} , {password: this.password, private_key: this.privateKey})
             .subscribe((response) => {
+                console.log(response);
                 const resJson = JSON.parse(response);
                 if (resJson.status === 201){
                     const bodyJson = JSON.parse(resJson.body);
@@ -35,7 +36,7 @@ export class AccessMyWalletComponent implements OnInit {
                     this.auth.addNewToken('token', bodyJson.data.jwt_token); // Add session id
                     this.auth.addNewToken('public-key', bodyJson.data.public_key); // Add session id
                     this.router.navigate(['/dashboard']);
-                }else if (resJson.status === 400){
+                }else {
                     this.invalidWallet = true;
                 }
             });

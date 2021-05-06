@@ -5,6 +5,7 @@ import {GlobalComponentsModule} from '../global-components/global-components.mod
 import { SendTransactionComponent } from './send-transaction/send-transaction.component';
 import { BuyCoinComponent } from './buy-coin/buy-coin.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { HomePageComponent } from './home-page/home-page.component';
   ],
     imports: [
         CommonModule,
-        GlobalComponentsModule
+        GlobalComponentsModule,
+        FormsModule
     ]
 })
 export class PrivateComponentsModule { }

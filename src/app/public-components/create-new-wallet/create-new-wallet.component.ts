@@ -35,7 +35,7 @@ export class CreateNewWalletComponent implements OnInit {
         // gọi 1 server sinh ra private key
         this.loading = true;
 
-        this.backend.postRequest('/create_new_wallet', {}, {password: this.password})
+        this.backend.postRequest('create_new_wallet', {}, {password: this.password})
         .subscribe((response) => {
             const resJson = JSON.parse(response);
             if (resJson.status === 201) {

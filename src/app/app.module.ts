@@ -11,22 +11,21 @@ import {AccessMyWalletComponent} from './public-components/access-my-wallet/acce
 import {PublicComponentsModule} from './public-components/public-components.module';
 import {PrivateComponentsModule} from './private-components/private-components.module';
 import {GlobalComponentsModule} from './global-components/global-components.module';
-import {DashboardComponentComponent} from './private-components/dashboard-component/dashboard-component.component';
-import {AuthGuardService} from './services/authguard.service';
+import {AuthGuardService, LoggedAuthGuardService} from './services/authguard.service';
 import {AuthService} from './services/auth.service';
 import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import {HomePageComponent} from './private-components/home-page/home-page.component';
 import {ConfigurationServiceProvider} from './services/configuration.service';
 import {BackendService} from './services/backend.service';
 import {HttpClientModule} from '@angular/common/http';
+import {WalletService} from './services/wallet.service';
 
 const appRoutes: Routes = [
-    {path: '', component: DashboardComponentComponent, canActivate: [AuthGuardService]},
-    {path: 'login', component: LoginComponent},
-    {path: 'create-new-wallet', component: CreateNewWalletComponent},
-    {path: 'access-my-wallet', component: AccessMyWalletComponent},
+    {path: '', component: HomePageComponent, canActivate: [AuthGuardService]},
+    {path: 'login', component: LoginComponent, canActivate: [LoggedAuthGuardService]},
+    {path: 'create-new-wallet', component: CreateNewWalletComponent, canActivate: [LoggedAuthGuardService]},
+    {path: 'access-my-wallet', component: AccessMyWalletComponent, canActivate: [LoggedAuthGuardService]},
     {path: 'dashboard', component: HomePageComponent, canActivate: [AuthGuardService]},
-    {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -53,11 +52,13 @@ const appRoutes: Routes = [
     ],
     providers: [
         AuthGuardService,
+        LoggedAuthGuardService,
         AuthService,
         JwtHelperService,
         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
         ConfigurationServiceProvider,
-        BackendService
+        BackendService,
+        WalletService
     ],
     bootstrap: [AppComponent]
 })
