@@ -29,4 +29,9 @@ export class AuthService {
     public get jwtToken(): string{
         return localStorage.getItem('token');
     }
+
+    public logout(): void{
+        this.removeToken('token');
+        this.removeToken('public-key');
+    }
 }

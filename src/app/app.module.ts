@@ -19,6 +19,7 @@ import {ConfigurationServiceProvider} from './services/configuration.service';
 import {BackendService} from './services/backend.service';
 import {HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet.service';
+import {BroadcastService} from './services/broadcast.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomePageComponent, canActivate: [AuthGuardService]},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
         ConfigurationServiceProvider,
         BackendService,
-        WalletService
+        WalletService,
+        BroadcastService
     ],
     bootstrap: [AppComponent]
 })

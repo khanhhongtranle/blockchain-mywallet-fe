@@ -8,14 +8,32 @@ import {WalletService} from '../../services/wallet.service';
 })
 export class BuyCoinComponent implements OnInit {
     public coins: number;
+    public address: string;
+    public loading: boolean;
+    public noti: boolean;
+    public notification: string;
 
     constructor(private wallet: WalletService) {
+        this.address = WalletService.walletAddress;
+        this.loading = false;
+        this.noti = false;
     }
 
     ngOnInit(): void {
     }
 
     public buyCoinsHandle(): void {
-        this.wallet.buyCoins(this.coins);
+        this.loading = true;
+        this.wallet.buyCoins(this.address, this.coins)
+        .subscribe((response) => {
+            console.log(response);
+            this.loading = false;
+            this.noti = true;
+            this.notification = 'Successful';
+        });
+    }
+
+    public dismissNotiHandle(): void {
+        this.noti = false;
     }
 }

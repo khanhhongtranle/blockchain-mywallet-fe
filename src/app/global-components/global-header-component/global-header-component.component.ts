@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-global-header-component',
@@ -7,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
 export class GlobalHeaderComponentComponent implements OnInit {
     public userToogle: boolean;
 
-    constructor() {
+    constructor(private auth: AuthService, private router: Router) {
         this.userToogle = false;
     }
 
@@ -20,5 +22,7 @@ export class GlobalHeaderComponentComponent implements OnInit {
 
     public logoutHandle(): void {
         // service auth logout
+        this.auth.logout();
+        this.router.navigate(['/login']);
     }
 }

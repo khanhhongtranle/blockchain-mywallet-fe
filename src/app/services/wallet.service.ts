@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {BackendService} from './backend.service';
+import {Observable, Subject} from 'rxjs';
+import {BroadcastService} from './broadcast.service';
 
 @Injectable()
 export class WalletService {
     public static walletAddress: string;
     private static walletBalance: number;
 
-    constructor(private auth: AuthService, private backend: BackendService) {
+    constructor(private auth: AuthService, private backend: BackendService, private broadcast: BroadcastService) {
         WalletService.walletAddress = this.auth.getTokenValue('public-key');
-        WalletService.walletBalance = 0;
+        WalletService.walletBalance = this.getBalance(WalletService.walletAddress);
     }
 
     public get balance(): number {
@@ -21,13 +23,29 @@ export class WalletService {
     }
 
     // method get wallet data (balance)
+    private getBalance(address): number{
+        let amount = 0;
+        this.backend.postRequest('amount', {}, {address}, this.auth.jwtToken)
+            .subscribe((response) => {
+                // tslint:disable-next-line:no-debugger
+                debugger;
+                const resJson = JSON.parse(response);
+                if (resJson.status === 201){
+                    const bodyJson = JSON.parse(resJson.body);
+                    amount = bodyJson.data.amount;
+                    this.broadcast.broadcastMessage('amount.update', amount);
+                }
+            });
+        return amount;
+    }
 
     // method buy coins
-    public buyCoins(coins): void{
+    public buyCoins(address, coins): Observable<any>{
+        const responseSubject = new Subject<any>();
         const body = {
             in: {
                 sender_address: 'KHTL',
-                receiver_address: WalletService.walletAddress,
+                receiver_address: address,
                 amount: coins
             },
            out: {
@@ -38,8 +56,10 @@ export class WalletService {
         };
         this.backend.postRequest('add_block', {}, body, this.auth.jwtToken)
             .subscribe((response) => {
-                console.log(response);
+                responseSubject.next(response);
+                responseSubject.complete();
             });
+        return responseSubject.asObservable();
     }
 
     // method send transaction
