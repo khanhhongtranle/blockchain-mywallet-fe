@@ -34,21 +34,21 @@
                     <ng-container *ngFor="let tx of listOfTransaction">
                         <tr class="slds-hint-parent">
                             <th data-label="Transaction ID" scope="row">
-                                <div class="slds-truncate" title="Cloudhub">
+                                <div class="slds-truncate over-text" title="Cloudhub">
                                     <a href="#" tabindex="-1">{{tx.iD}}</a>
                                 </div>
                             </th>
                             <td data-label="From">
-                                <div class="slds-truncate" title="From">{{tx.senderAddress}}</div>
+                                <div class="slds-truncate over-text" title="From">{{tx.senderAddress}}</div>
                             </td>
                             <td data-label="To">
-                                <div class="slds-truncate" title="To">{{tx.receiverAddress}}</div>
+                                <div class="slds-truncate over-text" title="To">{{tx.receiverAddress}}</div>
                             </td>
                             <td data-label="Amount">
-                                <div class="slds-truncate" title="Amount">{{tx.amount}}</div>
+                                <div class="slds-truncate over-text" title="Amount">{{tx.amount}}</div>
                             </td>
                             <td data-label="Created Date">
-                                <div class="slds-truncate" title="20%">{{tx.createdDate}}</div>
+                                <div class="slds-truncate over-text" title="20%">{{tx.createdDate}}</div>
                             </td>
                         </tr>
                     </ng-container>

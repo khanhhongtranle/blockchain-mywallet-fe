@@ -30,8 +30,6 @@ export class TransactionService {
                         createdDate: tx.timestamp
                     };
                     this.unconfirmedTransaction.push(element);
-                    // tslint:disable-next-line:no-debugger
-                    debugger;
                     this.broadcast.broadcastMessage('transaction.update', this.unconfirmedTransaction);
                 }
             }
