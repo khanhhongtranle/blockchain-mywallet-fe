@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet.service';
 import {BroadcastService} from './services/broadcast.service';
 import {TransactionService} from './services/transaction.service';
+import {BlockService} from './services/block.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomePageComponent, canActivate: [AuthGuardService]},
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
         BackendService,
         WalletService,
         BroadcastService,
-        TransactionService
+        TransactionService,
+        BlockService
     ],
     bootstrap: [AppComponent]
 })

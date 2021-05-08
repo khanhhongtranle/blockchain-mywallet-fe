@@ -6,7 +6,7 @@
                     <h2 id="element-with-table-label" class="slds-text-heading_medium slds-m-bottom_xx-small">Unconfirmed Transactions Pool</h2>
                 </div>
                 <div class="slds-col slds-size--2-of-12 slds-text-align--right">
-                    <button class="slds-button slds-button--success">Mine</button>
+                    <button (click)="mineHandle()" class="slds-button slds-button--success">Mine</button>
                 </div>
             </div>
 
@@ -56,4 +56,6 @@
             </table>
         </div>
     </article>
+
+    <app-notification *ngIf="noti" [notification]="notification" (dismissEvent)="noti = false"></app-notification>
 </section>

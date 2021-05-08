@@ -13,7 +13,6 @@ export interface ConfirmedTransaction{
     amount: number;
     createdDate: string;
     confirmedDate: string;
-    minerAddress: string;
 }
 
 export interface Block{
@@ -21,5 +20,6 @@ export interface Block{
     minerAddress: string;
     minedDate: string;
     numberOfTransactions: number;
+    // amountOfCoins: number;
     // transactionsInBlock: ConfirmedTransaction[];
 }

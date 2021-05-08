@@ -9,61 +9,38 @@
                         <thead>
                         <tr class="slds-line-height_reset">
                             <th class="" scope="col">
-                                <div class="slds-truncate" title="Tx ID">Block Index</div>
+                                <div class="slds-truncate" title="Block index">Block Index</div>
                             </th>
                             <th class="" scope="col">
-                                <div class="slds-truncate" title="From">Miner</div>
+                                <div class="slds-truncate" title="Miner">Miner</div>
                             </th>
                             <th class="" scope="col">
-                                <div class="slds-truncate" title="To">Transactions</div>
+                                <div class="slds-truncate" title="Transactions">Transactions</div>
                             </th>
                             <th class="" scope="col">
-                                <div class="slds-truncate" title="Amount">Amount</div>
-                            </th>
-                            <th class="" scope="col">
-                                <div class="slds-truncate" title="Created Date">Mined Date</div>
+                                <div class="slds-truncate" title="Mined Date">Mined Date</div>
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="slds-hint-parent">
-                            <th data-label="Opportunity Name" scope="row">
-                                <div class="slds-truncate" title="Cloudhub">
-                                    <a href="#" tabindex="-1">Cloudhub</a>
-                                </div>
-                            </th>
-                            <td data-label="Account Name">
-                                <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                            </td>
-                            <td data-label="Close Date">
-                                <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                            </td>
-                            <td data-label="Prospecting">
-                                <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                            </td>
-                            <td data-label="Confidence">
-                                <div class="slds-truncate" title="20%">20%</div>
-                            </td>
-                        </tr>
-                        <tr class="slds-hint-parent">
-                            <th data-label="Opportunity Name" scope="row">
-                                <div class="slds-truncate" title="Cloudhub + Anypoint Connectors">
-                                    <a href="#" tabindex="-1">Cloudhub + Anypoint Connectors</a>
-                                </div>
-                            </th>
-                            <td data-label="Account Name">
-                                <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                            </td>
-                            <td data-label="Close Date">
-                                <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                            </td>
-                            <td data-label="Prospecting">
-                                <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                            </td>
-                            <td data-label="Confidence">
-                                <div class="slds-truncate" title="20%">20%</div>
-                            </td>
-                        </tr>
+                        <ng-container *ngFor="let b of blocks">
+                            <tr class="slds-hint-parent">
+                                <th data-label="Block index" scope="row">
+                                    <div class="slds-truncate overflow-text" title="Cloudhub">
+                                        <a href="#" tabindex="-1">{{b.index}}</a>
+                                    </div>
+                                </th>
+                                <td data-label="Miner">
+                                    <div class="slds-truncate overflow-text" title="miner">{{b.minerAddress}}</div>
+                                </td>
+                                <td data-label="Transactions">
+                                    <div class="slds-truncate overflow-text" title="transactions">{{b.numberOfTransactions}}</div>
+                                </td>
+                                <td data-label="Mined date">
+                                    <div class="slds-truncate overflow-text" title="20%">{{b.minedDate}}</div>
+                                </td>
+                            </tr>
+                        </ng-container>
                         </tbody>
                     </table>
                 </div>
@@ -92,47 +69,36 @@
                             <th class="" scope="col">
                                 <div class="slds-truncate" title="Created Date">Created Date</div>
                             </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Created Date">Confirmed Date</div>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="slds-hint-parent">
-                            <th data-label="Opportunity Name" scope="row">
-                                <div class="slds-truncate" title="Cloudhub">
-                                    <a href="#" tabindex="-1">Cloudhub</a>
-                                </div>
-                            </th>
-                            <td data-label="Account Name">
-                                <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                            </td>
-                            <td data-label="Close Date">
-                                <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                            </td>
-                            <td data-label="Prospecting">
-                                <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                            </td>
-                            <td data-label="Confidence">
-                                <div class="slds-truncate" title="20%">20%</div>
-                            </td>
-                        </tr>
-                        <tr class="slds-hint-parent">
-                            <th data-label="Opportunity Name" scope="row">
-                                <div class="slds-truncate" title="Cloudhub + Anypoint Connectors">
-                                    <a href="#" tabindex="-1">Cloudhub + Anypoint Connectors</a>
-                                </div>
-                            </th>
-                            <td data-label="Account Name">
-                                <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                            </td>
-                            <td data-label="Close Date">
-                                <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                            </td>
-                            <td data-label="Prospecting">
-                                <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                            </td>
-                            <td data-label="Confidence">
-                                <div class="slds-truncate" title="20%">20%</div>
-                            </td>
-                        </tr>
+                        <ng-container *ngFor="let tx of transactions">
+                            <tr class="slds-hint-parent">
+                                <th data-label="Tx Id" scope="row">
+                                    <div class="slds-truncate overflow-text" title="Cloudhub">
+                                        <a href="#" tabindex="-1">{{tx.iD}}</a>
+                                    </div>
+                                </th>
+                                <td data-label="From">
+                                    <div class="slds-truncate overflow-text" title="Cloudhub">{{tx.senderAddress}}</div>
+                                </td>
+                                <td data-label="To">
+                                    <div class="slds-truncate overflow-text" title="4/14/2015">{{tx.receiverAddress}}</div>
+                                </td>
+                                <td data-label="Amount">
+                                    <div class="slds-truncate overflow-text" title="Prospecting">{{tx.amount}}</div>
+                                </td>
+                                <td data-label="Created Date">
+                                    <div class="slds-truncate overflow-text" title="20%">{{tx.createdDate}}</div>
+                                </td>
+                                <td data-label="Confirmed Date">
+                                    <div class="slds-truncate overflow-text" title="Prospecting">{{tx.confirmedDate}}</div>
+                                </td>
+                            </tr>
+                        </ng-container>
                         </tbody>
                     </table>
                 </div>

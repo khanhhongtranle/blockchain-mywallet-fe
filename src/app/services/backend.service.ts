@@ -65,12 +65,16 @@ export class BackendService {
         this.router.navigate(['/login']);
     }
 
-    public getRequest(route: string = '', params: any = {}): Observable<any> {
+    public getRequest(route: string = '', params: any = {}, accessToken: string = null): Observable<any> {
         const responseSubject = new Subject<any>();
         this.resetTimeOut();
+        let headers = this.getHeaders();
+        if (accessToken) {
+            headers = headers.set('Authorization', 'JWT ' + accessToken);
+        }
         this.http.get(
             this.configuration.apiUrl + '/' + encodeURI(route),
-            {headers: this.getHeaders(), observe: 'response', params: this.prepareParams(params)}
+            {headers, observe: 'response', params: this.prepareParams(params)}
         ).subscribe(
             (res) => {
                 const resString = JSON.stringify({status: res.status, body: res.body});
@@ -85,6 +89,7 @@ export class BackendService {
         return responseSubject.asObservable();
     }
 
+    // tslint:disable-next-line:max-line-length
     public postRequest(route: string = '', params: any = {}, body: any = {}, accessToken: string = null, httpErrorReport = true): Observable<any> {
         const responseSubject = new Subject<any>();
 
