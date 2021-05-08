@@ -6,6 +6,8 @@ import { SendTransactionComponent } from './send-transaction/send-transaction.co
 import { BuyCoinComponent } from './buy-coin/buy-coin.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {FormsModule} from '@angular/forms';
+import { HistoryTransactionComponent } from './history-transaction/history-transaction.component';
+import { TransactionPoolComponent } from './transaction-pool/transaction-pool.component';
 
 
 
@@ -15,6 +17,8 @@ import {FormsModule} from '@angular/forms';
     SendTransactionComponent,
     BuyCoinComponent,
     HomePageComponent,
+    HistoryTransactionComponent,
+    TransactionPoolComponent,
   ],
     imports: [
         CommonModule,

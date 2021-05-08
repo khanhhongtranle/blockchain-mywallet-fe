@@ -26,4 +26,12 @@ export class VerticalNavigationComponent implements OnInit {
     public navigateToBuyCoin(): void {
         this.navigate.emit('buycoin');
     }
+
+    public navigateToHistory(): void {
+        this.navigate.emit('history');
+    }
+
+    public navigateToTransactionPool(): void {
+        this.navigate.emit('pool');
+    }
 }

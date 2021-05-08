@@ -20,11 +20,18 @@
                             </label>
                     </span>
             <span class="slds-nav-vertical__item">
-                        <input type="radio" id="unique-id-01-transaction-history" value="unique-id-01-private-reports" name="unique-id-example"/>
+                        <input (click)="navigateToTransactionPool()" type="radio" id="unique-id-01-transaction-pool" value="unique-id-01-private-reports" name="unique-id-example"/>
+                        <label class="slds-nav-vertical__action" for="unique-id-01-transaction-pool">
+                        <span class="slds-nav-vertical_radio-faux">Transaction Pool</span>
+                        </label>
+                    </span>
+            <span class="slds-nav-vertical__item">
+                        <input (click)="navigateToHistory()" type="radio" id="unique-id-01-transaction-history" value="unique-id-01-private-reports" name="unique-id-example"/>
                         <label class="slds-nav-vertical__action" for="unique-id-01-transaction-history">
                         <span class="slds-nav-vertical_radio-faux">Transaction History</span>
                         </label>
                     </span>
+
         </fieldset>
     </div>
 </div>

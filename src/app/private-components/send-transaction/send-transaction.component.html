@@ -1,4 +1,5 @@
 <section>
+    <app-notification *ngIf="noti" [notification]="notification" (dismissEvent)="noti = false;"></app-notification>
     <article class="slds-card">
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -22,15 +23,28 @@
         <div class="slds-card__body slds-card__body_inner">
             <div class="slds-form">
                 <div class="slds-form-element slds-form-element_stacked">
-                    <label class="slds-form-element__label" for="stacked-input-id-01">Amount</label>
+                    <label class="slds-form-element__label slds-m-right_none" for="default2">Amount</label>
                     <div class="slds-form-element__control">
-                        <input type="text" id="stacked-input-id-01" class="slds-input" />
+                        <button class="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement" title="Decrement counter">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#ban"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Decrement counter</span>
+                        </button>
+                        <input [(ngModel)]="amount" type="number" id="default2" placeholder="1" class="slds-input slds-input_counter"/>
+                        <button class="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment" title="Increment counter">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#new"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Increment counter</span>
+                        </button>
                     </div>
                 </div>
+
                 <div class="slds-form-element slds-form-element_stacked">
                     <label class="slds-form-element__label" for="stacked-input-id-02">To address</label>
                     <div class="slds-form-element__control">
-                        <input id="stacked-input-id-02" class="slds-input"/>
+                        <input [(ngModel)]="receiverAddress" id="stacked-input-id-02" class="slds-input"/>
                     </div>
                 </div>
                 <div class="slds-form-element slds-form-element_stacked slds-form-element_readonly">
@@ -42,7 +56,7 @@
             </div>
         </div>
         <footer class="slds-card__footer">
-            <button class="slds-button slds-button--brand">Send transaction</button>
+            <button (click)="sendTransactionHandle()" class="slds-button slds-button--brand">Send transaction</button>
         </footer>
     </article>
 </section>

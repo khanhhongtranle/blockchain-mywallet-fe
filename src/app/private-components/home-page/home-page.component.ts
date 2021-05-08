@@ -19,15 +19,23 @@ export class HomePageComponent implements OnInit {
         this.tab = value;
     }
 
-    public get showDashboard(): boolean{
+    public get showDashboard(): boolean {
         return this.tab === 'dashboard';
     }
 
-    public get showBuyCoin(): boolean{
+    public get showBuyCoin(): boolean {
         return this.tab === 'buycoin';
     }
 
-    public get showSendTransaction(): boolean{
+    public get showSendTransaction(): boolean {
         return this.tab === 'sendtransaction';
+    }
+
+    public get showHistory(): boolean {
+        return this.tab === 'history';
+    }
+
+    public get showTransactionPool(): boolean {
+        return this.tab === 'pool';
     }
 }
