@@ -17,10 +17,14 @@ export class HistoryTransactionComponent implements OnInit {
     public subcribe: any[] = [];
 
     constructor(private transaction: TransactionService, private block: BlockService, private broadcast: BroadcastService) {
-        this.subcribe.push(
-            this.broadcast.message$.subscribe(message => {
-                this.handleMessage(message);
-            }));
+        // this.subcribe.push(
+        //     this.broadcast.message$.subscribe(message => {
+        //         this.handleMessage(message);
+        //     }));
+
+        this.broadcast.message$.subscribe(message => {
+            this.handleMessage(message);
+        });
     }
 
     ngOnInit(): void {

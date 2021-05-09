@@ -26,8 +26,6 @@ export class SocketService {
 
         // receive message
         this.socket.on('transaction.update', (response) => {
-            console.log('transaction ');
-            console.log(response);
             this.broadcast.broadcastMessage('transaction.update.new', {new_tx: response});
         });
 
@@ -38,6 +36,7 @@ export class SocketService {
         });
 
         this.socket.on('blockchain.update', (response) => {
+            console.log('from socket blockchain.update');
             const data = JSON.parse(response);
             this.broadcast.broadcastMessage('blockchain.update.new', {
                 new_block: data.lastest_block,
