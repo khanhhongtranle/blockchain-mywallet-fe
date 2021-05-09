@@ -1,6 +1,7 @@
 export class ConfigurationService {
 
     public apiUrl: string;
+    public socketUrl: string;
     public data: any = {
         autoLogout: 1
     };

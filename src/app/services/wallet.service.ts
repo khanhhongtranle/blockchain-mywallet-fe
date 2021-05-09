@@ -43,14 +43,14 @@ export class WalletService {
         const responseSubject = new Subject<any>();
         const body = {
             in: {
-                sender_address: 'KHTL',
+                sender_address: 'TLKH',
                 receiver_address: address,
                 amount: coins
             },
             out: {
-                receiver_address: null,
-                sender_address: null,
-                amount: null,
+                receiver_address: address,
+                sender_address: 'TLKH',
+                amount: coins,
             }
         };
         this.backend.postRequest('add_block', {}, body, this.auth.jwtToken)

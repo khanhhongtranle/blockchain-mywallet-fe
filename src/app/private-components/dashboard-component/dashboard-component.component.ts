@@ -7,13 +7,13 @@ declare var window: any;
 @Component({
     selector: 'app-dashboard-component',
     templateUrl: './dashboard-component.component.html',
-    styleUrls: ['./dashboard-component.component.css']
+    styleUrls: ['./dashboard-component.component.css'],
+    providers: [WalletService]
 })
 export class DashboardComponentComponent implements OnInit {
     public balance: number;
     public walletAddress: string;
     private serviceSubscriptions: any[] = [];
-
 
     constructor(private wallet: WalletService, private broadcast: BroadcastService) {
         this.walletAddress = WalletService.walletAddress;
@@ -33,6 +33,10 @@ export class DashboardComponentComponent implements OnInit {
         switch (message.messagetype) {
             case 'amount.update':
                 this.balance = message.messagedata;
+                break;
+
+            case 'amount.update.new':
+                this.balance -= message.messagedata.amount;
                 break;
             default:
             // to do nothing

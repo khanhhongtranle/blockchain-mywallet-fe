@@ -16,8 +16,6 @@ export class BlockService {
     public loadChains(): void {
         this.backend.getRequest('chains', {}, this.auth.jwtToken)
         .subscribe((response) => {
-            // tslint:disable-next-line:no-debugger
-            debugger;
             const resJson = JSON.parse(response);
             if (resJson.status === 200) {
                 const bodyJson = resJson.body;

@@ -7,7 +7,8 @@ import {BroadcastMessage, BroadcastService} from '../../services/broadcast.servi
 @Component({
     selector: 'app-history-transaction',
     templateUrl: './history-transaction.component.html',
-    styleUrls: ['./history-transaction.component.css']
+    styleUrls: ['./history-transaction.component.css'],
+    providers: [TransactionService, BlockService]
 })
 export class HistoryTransactionComponent implements OnInit {
 
@@ -32,6 +33,27 @@ export class HistoryTransactionComponent implements OnInit {
                 break;
             case 'confirmed_transaction.update':
                 this.transactions = message.messagedata.confirmed;
+                break;
+            case 'blockchain.update.new':
+                console.log('blockchain.update.new');
+                const dataBlock = message.messagedata.new_block;
+                const dataTxs = message.messagedata.new_tsx;
+                this.blocks.push({
+                    index: dataBlock.index,
+                    minerAddress: dataBlock.miner,
+                    numberOfTransactions: dataBlock.num_of_tx,
+                    minedDate: dataBlock.timestamp
+                });
+                for (const tx of dataTxs){
+                    this.transactions.push({
+                        iD: tx.id,
+                        receiverAddress: tx.receiver_address,
+                        senderAddress: tx.sender_address,
+                        amount: tx.amount,
+                        createdDate: tx.timestamp,
+                        confirmedDate: tx.confirmed_timestamp
+                    });
+                }
                 break;
             default:
 

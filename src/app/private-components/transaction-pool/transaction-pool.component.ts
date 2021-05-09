@@ -7,7 +7,8 @@ import {AuthService} from '../../services/auth.service';
 @Component({
     selector: 'app-transaction-pool',
     templateUrl: './transaction-pool.component.html',
-    styleUrls: ['./transaction-pool.component.css']
+    styleUrls: ['./transaction-pool.component.css'],
+    providers: [TransactionService]
 })
 export class TransactionPoolComponent implements OnInit {
 
@@ -21,6 +22,7 @@ export class TransactionPoolComponent implements OnInit {
 
         this.serviceSubscriptions.push(
             this.broadcast.message$.subscribe(message => {
+                console.log(message);
                 this.handleMessage(message);
             })
         );
@@ -34,6 +36,16 @@ export class TransactionPoolComponent implements OnInit {
             case 'transaction.update':
                 this.listOfTransaction = message.messagedata.unconfirmed;
                 break;
+            case 'transaction.update.new':
+                const newTx: UnconfirmedTransaction = {
+                    iD: message.messagedata.new_tx.id,
+                    senderAddress: message.messagedata.new_tx.sender_address,
+                    receiverAddress: message.messagedata.new_tx.receiver_address,
+                    amount: message.messagedata.new_tx.amount,
+                    createdDate: message.messagedata.new_tx.timestamp
+                } ;
+                this.listOfTransaction.push(newTx);
+                break;
             default:
 
         }
@@ -46,6 +58,7 @@ export class TransactionPoolComponent implements OnInit {
             if (resJson.status === 200) {
                 this.noti = true;
                 this.notification = resJson.body;
+                this.listOfTransaction = [];
             }
         });
     }

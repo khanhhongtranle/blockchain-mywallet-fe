@@ -22,6 +22,7 @@ import {WalletService} from './services/wallet.service';
 import {BroadcastService} from './services/broadcast.service';
 import {TransactionService} from './services/transaction.service';
 import {BlockService} from './services/block.service';
+import {SocketService} from './services/socket.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomePageComponent, canActivate: [AuthGuardService]},
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
         WalletService,
         BroadcastService,
         TransactionService,
-        BlockService
+        BlockService,
+        SocketService
     ],
     bootstrap: [AppComponent]
 })
