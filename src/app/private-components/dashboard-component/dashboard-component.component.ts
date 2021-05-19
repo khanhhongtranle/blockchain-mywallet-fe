@@ -36,7 +36,7 @@ export class DashboardComponentComponent implements OnInit {
                 break;
 
             case 'amount.update.new':
-                this.balance -= message.messagedata.amount;
+                this.balance += message.messagedata.amount;
                 break;
             default:
             // to do nothing
